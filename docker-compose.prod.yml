@@ -22,7 +22,7 @@ services:
       DEFAULT_HOST: ${DEFAULT_HOST:-}
       TRUST_DOWNSTREAM_PROXY: "false"
     networks:
-      - nginx-proxy
+      - www-proxy
     labels:
       - "com.github.nginx-proxy.nginx"
 
@@ -41,13 +41,13 @@ services:
       NGINX_PROXY_CONTAINER: nginx-proxy
       DEFAULT_EMAIL: ${ACME_EMAIL:-admin@example.com}
     networks:
-      - nginx-proxy
+      - www-proxy
     depends_on:
       - nginx-proxy
 
 networks:
-  nginx-proxy:
-    name: nginx-proxy
+  www-proxy:
+    name: www-proxy
     driver: bridge
 
 volumes:
